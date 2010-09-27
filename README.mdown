@@ -62,3 +62,9 @@ TODO: Create spotlight
 ## Other info
 
 This has been tested with Cocos2D 0.99.5 Beta 3
+
+I'm sure this code can be improved. Can't wait to hear your suggestions and corrections. 
+
+License: http://www.cocos2d-iphone.org/wiki/doku.php/license (GNU LGPL v3 with an extension)
+
+If you use this for anything, let me know. I'd be super stoked.
