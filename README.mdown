@@ -1,0 +1,64 @@
+# Cocos2D Iris Effects
+
+This project contains two classes which provide iris style effects for Cocos2D projects. The classes depend on the gfDrawFilledRect() and gfDrawInvertedCircle() functions contained in GFDrawingPrimitives.h.
+
+## CCTransitionIris
+
+This is a scene transition which presents a closing iris over the outgoing scene which subsequently opens on the incoming scene. The iris shape can be customized.
+
+### Basic usage:
+
+<pre>
+   CGPoint center = ccp([CCDirector sharedDirector].winSize.width / 2, 
+                        [CCDirector sharedDirector].winSize.height / 2);
+   
+   
+   CCTransition* trans = [CCTransitionIris transitionWithDuration:2.0f 
+                                           scene:scene 
+                                           irisPosition:center 
+                                           radius:0.0f 
+                                           color:ccBLACK];
+
+   [[CCDirector sharedDirector] replaceScene:trans];
+</pre>
+
+In this case we create a transition which will close over the outgoing scene with a circular shape. The screen will be filled entirely with black and will then open on the incoming scene. 
+
+The total duration of the closing and opening is 2 seconds. 
+
+Because we aren't using a sprite mask the transition draws the entire overlay using OpenGL calls for maximum crispness.
+
+
+
+### Here's a more advanced example:
+
+<pre>
+   CGPoint center = ccp(300, 300);
+   
+   CCTransition* trans = [CCTransitionIris transitionWithDuration:2.0f 
+                                           scene:scene 
+                                           irisPosition:center 
+                                           radius:0.0f 
+                                           color:ccRED
+                                           mask:@"mask-star-128.png"];
+
+   [[CCDirector sharedDirector] replaceScene:trans];
+</pre>
+
+Here we use an offset point for the irisPosition. We could use the location of a touch or a character on screen. 
+
+The radius is still 0, however if we wanted the iris to not close completely we could increase that value. This could be used to highlight a particular onscreen element which will carry over from one scene to another.
+
+The mask parameter is the name of a square sprite which will be used as the opening for the iris. The mask should be fully white at the edges and fully transparent in the center for best results. The sprite will be rendered in the color specified by the color parameter. 
+
+You can supply any size sprite for the mask, however higher resolution sprites will have a crisper edge when enlarged. If you just want a circle, omit the mask parameter and the iris will be drawn using OpenGL and will look much better.
+
+
+## CCSpotlight
+
+TODO: Create spotlight
+
+
+## Other info
+
+This has been tested with Cocos2D 0.99.5 Beta 3
