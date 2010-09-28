@@ -9,8 +9,8 @@
 
 @interface SpotlightTestScene : CCLayer {
 	
-@private CGPoint firstTouch;
-  
+	@private CGPoint firstTouch;
+  @private CCNode* spotlight; 
 }
 
 +(id) scene;

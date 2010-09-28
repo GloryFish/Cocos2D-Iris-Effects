@@ -37,8 +37,13 @@
     menu.position = ccp((returnToMenu.rect.size.width / 2) + screenSize.width * 0.50f, 30);
     [self addChild:menu];
     
-    CCNode* spotlight = [GFSpotlight spotWithPosition:ccp(200, 300) radius:50.0f color:ccGREEN];
+    spotlight = [GFSpotlight spotWithPosition:ccp(200, 300) radius:50.0f color:ccGREEN];
     [self addChild: spotlight];
+    
+    id actionTo = [CCMoveTo actionWithDuration: 10 position:ccp(1000, 800)];
+    
+    [spotlight runAction: actionTo];
+    
 	}
 	return self;
 }
@@ -49,9 +54,7 @@
     CGPoint touchLocation = [self convertTouchToNodeSpace:touch];	
     
 		CCLOG(@"Touch at: %@", NSStringFromCGPoint(touchLocation));
-    
-    CCScene* scene = [MainMenu scene];
-    [[CCDirector sharedDirector] replaceScene:[CCTransitionIris transitionWithDuration:2.0f scene:scene irisPosition:touchLocation radius:0.0f color:ccWHITE]];
+    [spotlight setPosition:touchLocation];
     
 	}
 }
