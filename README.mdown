@@ -2,6 +2,8 @@
 
 This project contains two classes which provide iris style effects for Cocos2D projects. The classes depend on the gfDrawFilledRect() and gfDrawInvertedCircle() functions contained in GFDrawingPrimitives.h.
 
+This project has been updated to support Retina displays. (Thanks [snakewa](https://github.com/snakewa)!)
+
 ## CCTransitionIris
 
 This is a scene transition which presents a closing iris over the outgoing scene which subsequently opens on the incoming scene. The iris shape can be customized.
