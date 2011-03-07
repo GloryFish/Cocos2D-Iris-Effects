@@ -47,14 +47,14 @@
     
 		CCLOG(@"Touch at: %@", NSStringFromCGPoint(touchLocation));
     
-    CCScene* scene = [MainMenu scene];
+    CCScene* scene = [MainMenuScene scene];
     [[CCDirector sharedDirector] replaceScene:[CCTransitionIris transitionWithDuration:2.0f scene:scene irisPosition:touchLocation radius:0.0f color:ccWHITE]];
     
 	}
 }
 
 - (void)onMainMenu {
-  CCScene* scene = [MainMenu scene];
+  CCScene* scene = [MainMenuScene scene];
   
   [[CCDirector sharedDirector] replaceScene:[CCTransitionIris transitionWithDuration:2.0f scene:scene irisPosition:ccp([[CCDirector sharedDirector] winSize].width / 2, [[CCDirector sharedDirector] winSize].height / 2) radius:0.0f color:ccBLUE]];
 }

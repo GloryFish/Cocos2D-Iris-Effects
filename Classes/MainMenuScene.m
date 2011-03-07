@@ -11,12 +11,12 @@
 #import "SpotlightTestScene.h"
 #import "CCTransitionIris.h"
 
-@implementation MainMenu
+@implementation MainMenuScene
 
 +(id) scene
 {
 	CCScene *scene = [CCScene node];
-	MainMenu *layer = [MainMenu node];
+	MainMenuScene *layer = [MainMenuScene node];
 	[scene addChild: layer];
 	return scene;
 }

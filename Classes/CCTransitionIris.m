@@ -52,16 +52,16 @@
 -(void)tick:(ccTime)dt {
 	elapsed += dt;
   
-  if (elapsed < (duration / 2)) { // Shrink
-    curRadius = maxRadius - ((maxRadius - radius) * elapsed) / (duration / 2);
-  } else if (elapsed < duration) { // Grow
+  if (elapsed < (duration_ / 2)) { // Shrink
+    curRadius = maxRadius - ((maxRadius - radius) * elapsed) / (duration_ / 2);
+  } else if (elapsed < duration_) { // Grow
   	if (shrinking) {
       shrinking = NO;
-      outScene.visible = NO;
-      inScene.visible = YES;
-      [inScene visit];
+      outScene_.visible = NO;
+      inScene_.visible = YES;
+      [inScene_ visit];
     }
-    curRadius = radius + ((maxRadius - radius) * (elapsed - (duration / 2))) / (duration / 2);
+    curRadius = radius + ((maxRadius - radius) * (elapsed - (duration_ / 2))) / (duration_ / 2);
   } else {
     [self finish];
   }
@@ -75,10 +75,10 @@
 -(void) onEnter {
 	[super onEnter];
   
-	outScene.visible = YES;
-  inScene.visible = NO;
+	outScene_.visible = YES;
+  inScene_.visible = NO;
 	
-  [outScene visit];
+  [outScene_ visit];
   
   if (useMask) {
     mask = [CCSprite spriteWithFile:maskFile];
@@ -95,12 +95,12 @@
 }
 
 -(void)draw {
-  if( inSceneOnTop ) {
-		[outScene visit];
-		[inScene visit];
+  if( inSceneOnTop_ ) {
+		[outScene_ visit];
+		[inScene_ visit];
 	} else {
-		[inScene visit];
-		[outScene visit];
+		[inScene_ visit];
+		[outScene_ visit];
 	}
   
   glColor4ub(color.r, color.g, color.b, 255);

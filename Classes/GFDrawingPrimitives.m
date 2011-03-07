@@ -8,8 +8,9 @@
 #import "cocos2d.h"
 
 void gfDrawFilledRect( CGPoint v1, CGPoint v2 ) {
-	CGPoint poli[]={v1,CGPointMake(v1.x,v2.y),v2,CGPointMake(v2.x,v1.y)};
+	CGPoint poli[]={CC_POINTS_TO_PIXELS(v1),CGPointMake(CC_CONTENT_SCALE_FACTOR()*v1.x,CC_CONTENT_SCALE_FACTOR()*v2.y),CC_POINTS_TO_PIXELS(v2),CGPointMake(CC_CONTENT_SCALE_FACTOR()*v2.x,CC_CONTENT_SCALE_FACTOR()*v1.y)};
   
+    
 	glDisable(GL_TEXTURE_2D);
 	glDisableClientState(GL_TEXTURE_COORD_ARRAY);
 	glDisableClientState(GL_COLOR_ARRAY);
@@ -23,7 +24,9 @@ void gfDrawFilledRect( CGPoint v1, CGPoint v2 ) {
 	glEnable(GL_TEXTURE_2D);
 }
 
-void gfDrawInvertedCircle(CGPoint center, float radius, NSUInteger segs) {
+void gfDrawInvertedCircle(CGPoint center1, float radius1, NSUInteger segs) {
+    CGPoint center = CC_POINTS_TO_PIXELS(center1);
+    float radius = radius1*CC_CONTENT_SCALE_FACTOR();
 	const float coef = (2.0f * (float)M_PI / segs) / 4;
 	
   GLfloat *vertices = calloc( (sizeof(GLfloat) * 2 * (segs + 2)), 1);
@@ -52,7 +55,7 @@ void gfDrawInvertedCircle(CGPoint center, float radius, NSUInteger segs) {
       vertices[1] = center.y - radius; 
     }
     
-    for(int i = 0; i <= segs; i++) {
+    for(int i = 0; i <= (int) segs; i++) {
     	int offset = (angle % 90) * segs;
       
       float rads = (i + offset) * coef;

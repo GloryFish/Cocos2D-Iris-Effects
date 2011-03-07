@@ -26,7 +26,7 @@
     irisPos = p;
     radius = r;
     color = c;
-    
+    opacity = 255;
     if (m != nil) {
 			useMask = YES;
       mask = [CCSprite spriteWithFile:m];
@@ -55,16 +55,37 @@
 }
 
 -(void)setPosition:(CGPoint)pos {
+  
   if (useMask) {
   	irisPos = pos;
     mask.position = pos;
   }
+    
 }
 
+-(void)setIrisPosition:(CGPoint)pos {
+    irisPos = pos;
+}
+
+-(void) setColor:(ccColor3B)givenColor
+{
+    color = givenColor;
+}
+-(ccColor3B) color{
+    return color;
+}
+-(GLubyte) opacity{
+    return opacity;
+}
+-(void) setOpacity: (GLubyte) givenOpacity
+{
+    opacity = givenOpacity;
+}
 -(void)draw {
-  glColor4ub(color.r, color.g, color.b, 255);
+  glColor4ub(color.r, color.g, color.b, opacity);
   
 	// Draw top
+
   gfDrawFilledRect(ccp(0.0f, winSize.height), ccp(winSize.width, irisPos.y + radius));
   
 	// Draw left

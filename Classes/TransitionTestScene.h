@@ -13,5 +13,5 @@
 }
 
 +(id) scene;
-
+-(void) onMainMenu;
 @end

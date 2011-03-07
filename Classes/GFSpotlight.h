@@ -7,7 +7,7 @@
 
 #import "cocos2d.h"
 
-@interface GFSpotlight : CCNode {
+@interface GFSpotlight : CCNode<CCRGBAProtocol> {
 
 	@private CGSize winSize;
 	@private CGPoint irisPos;
@@ -15,6 +15,7 @@
 	@private float radius;
 	@private BOOL useMask;
 	@private CCSprite* mask;
+    @private GLubyte opacity;
 }
 
 +(id)spotWithPosition:(CGPoint)p radius:(float)r color:(ccColor3B)c;
@@ -23,5 +24,5 @@
 
 -(CGPoint)position;
 -(void)setPosition:(CGPoint)pos;
-
+-(void)setIrisPosition:(CGPoint)pos;
 @end

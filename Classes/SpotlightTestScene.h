@@ -6,13 +6,13 @@
 //
 
 #import "cocos2d.h"
-
+#import "GFSpotlight.h"
 @interface SpotlightTestScene : CCLayer {
 	
 	@private CGPoint firstTouch;
-  @private CCNode* spotlight; 
+  @private GFSpotlight* spotlight; 
 }
 
 +(id) scene;
-
+-(void)  onMainMenu;
 @end
